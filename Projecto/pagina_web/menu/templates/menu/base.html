@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://unpkg.com/htmx.org@1.9.6" integrity="sha384-FhXw7b6AlE/jyjlZH5iHa/tTe9EpJ1Y55RjcgPbjeWMskSxZt1v9qkxLJWNJaGni" crossorigin="anonymous"></script>
+    <title>Two Dropdowns</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .dropdown-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        select {
+            padding: 10px;
+            margin: 5px;
+        }
+        #display-area {
+            margin-top: 200px; /* Add spacing below dropdowns */
+            border: 5px solid #ccc; /* Add a border for the display area */
+            padding: 10px; /* Add padding to the display area */
+        }
+    </style>
+</head>
+<body>
+    <form id="selectionForm" method="GET" hx-post="{% url 'display' %}" hx-target="#display-area">
+        {% csrf_token %}
+        <div class="dropdown-container">
+            <select id="firstDropdown" 
+                name= 'planta'
+                hx-get="{% url 'get_plagas' %}"
+                hx-trigger="change"
+                hx-target= "#plaga"
+
+                >
+                
+
+                <option value="" selected disabled>Escoja una planta</option>
+                {% for planta in plants %}
+                    <option value="{{ planta.planta }}">{{ planta.planta }}</option>
+                {% endfor %}
+            </select>
+            
+        </div>
+
+        <div id='plaga'>
+            {% include 'menu/plaga.html' %}
+        </div>
+
+        <div>
+            <button type="submit">Submit</button>
+        </div>
+
+        <div id="display-area" hx-target="#display-area" hx-swap="innerHTML">
+            <!-- Information retrieved from the database will be displayed here -->
+        </div>
+
+    </form>
+
+    <script>
+        // Add HTMX attributes or JavaScript to fetch and update information in the display area.
+    </script>
+    
+</body>
+</html>
+

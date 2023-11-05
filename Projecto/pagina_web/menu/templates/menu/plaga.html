@@ -1,0 +1,12 @@
+
+<select id="secondDropdown"
+    name= 'plaga'
+    hx-get={% url 'display' %}
+    hx-trigger="change"
+    hx-target="#display-area">
+
+    <option value="" selected disabled>Escoja una plaga</option>
+    {% for plaga in plaga %}
+        <option value="{{ plaga.0 }}">{{ plaga.0 }}</option>
+    {% endfor %}
+</select>
