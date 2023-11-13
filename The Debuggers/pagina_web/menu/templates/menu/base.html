@@ -1,35 +1,43 @@
+{% load static %}
 <!DOCTYPE html>
 <html>
 <head>
     <script src="https://unpkg.com/htmx.org@1.9.6" integrity="sha384-FhXw7b6AlE/jyjlZH5iHa/tTe9EpJ1Y55RjcgPbjeWMskSxZt1v9qkxLJWNJaGni" crossorigin="anonymous"></script>
     <title>Two Dropdowns</title>
     <style>
-        body {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-        }
+    body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+        background-color: #346b3d;
+    }
 
-        .dropdown-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-        }
+    .dropdown-container {
+        display: inline-block;
+        justify-content: space-around;
+        align-items: center;
+        margin-left: 20%;
+        margin-right: 20%;
+    }
 
-        select {
-            padding: 10px;
-            margin: 5px;
-        }
-        #display-area {
-            margin-top: 200px; /* Add spacing below dropdowns */
-            border: 5px solid #ccc; /* Add a border for the display area */
-            padding: 10px; /* Add padding to the display area */
-        }
+    select {
+        padding: 10px;
+        margin: 5px;
+    }
+    #display-area {
+        margin: 20% 0; /* Add spacing below dropdowns */
+        border: 2px solid #ccc; /* Add a border for the display area */
+        padding: 8px; /* Add padding to the display area */
+        background-color: #b8e3ba ;
+        justify-content: flex-end;
+    }
     </style>
+    <link type='text/css' href='{% static "css/prueba1.css" %}' rel="stylesheet" />
 </head>
 <body>
+    
     <form id="selectionForm" method="GET" hx-post="{% url 'display' %}" hx-target="#display-area">
         {% csrf_token %}
         <div class="dropdown-container">
@@ -51,6 +59,7 @@
         </div>
 
         <div id='plaga'>
+
             {% include 'menu/plaga.html' %}
         </div>
 
