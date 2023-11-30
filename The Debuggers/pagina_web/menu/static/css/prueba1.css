@@ -1,6 +1,31 @@
 body {
-    background-color: green;
-    background-repeat: no-repeat;
+    font-family: 'Roboto', sans-serif;
+    display: flex;    
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    background-image: url('/static/imagenes/Bosque.jpg');
+    min-height: 100%;
+    background-position: center;
     background-size: cover;
-  }
-  
+}
+
+.dropdown-container {
+    display: inline-block;
+    justify-content: space-around;
+
+}
+
+select {
+    padding: 10px;
+    margin: 5px;
+}
+#display-area {
+    margin: 10% 0; /* Add spacing below dropdowns */
+    margin-left: 5%;
+    margin-right: 5%;
+    border: 2px solid #ccc; /* Add a border for the display area */
+    padding: 8px; /* Add padding to the display area */
+    background-color: #b8e3ba ;
+    justify-content: flex-end;
+}

@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <link rel="stylesheet" href="/static/css/prueba1.css" type="text/css">
     <script src="https://unpkg.com/htmx.org@1.9.6" integrity="sha384-FhXw7b6AlE/jyjlZH5iHa/tTe9EpJ1Y55RjcgPbjeWMskSxZt1v9qkxLJWNJaGni" crossorigin="anonymous"></script>
     <title>Display Data</title>
 </head>
 <body>
     <h1>Selected Data</h1>
-    
+
+    <div>
     <ul>
         {% for data in results %}
             <li>
@@ -16,11 +18,12 @@
                 <strong>Nombre cientifico:</strong> {{ data.nombre_cientifico }}<br>
                 <strong>Dosis:</strong> {{ data.dosis }}<br>
                 <strong>Informacion:</strong> {{ data.informacion }}<br>
-                <strong>Etiqueta:</strong> {{ data.etiqueta }}<br>
+                <strong>Etiqueta:</strong> <a href="{{ data.etiqueta }}">{{ data.pesticida }}</a><br>
             </li>
         {% empty %}
             <li>No data found for the selected plant and plague.</li>
         {% endfor %}
     </ul>
+</div>
 </body>
 </html>
